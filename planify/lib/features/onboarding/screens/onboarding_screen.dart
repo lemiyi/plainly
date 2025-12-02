@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:planify/core/constants/app_assets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planify/data/models/onboarding/onboarding_model.dart';
+import 'package:planify/features/onboarding/controllers/onboarding_controller.dart';
 
 class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key, this.onDone});
+  OnboardingScreen({super.key, this.onDone});
 
   /// Optional callback called when the user finishes OnboardingScreen.
   final VoidCallback? onDone;
@@ -16,6 +17,7 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   int _index = 0;
+  late final OnboardingController _controller;
 
   final List<OnBoardingModel> boards = [
     OnBoardingModel(
@@ -46,10 +48,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     // Default behaviour: navigate to root route. Update this if your app
     // uses named routes (e.g. Routes.todo) or GetX navigation.
-    Get.to('/');
+    _controller.goToHome();
   }
 
   @override
+  void initState() {
+    super.initState();
+    // Retrieve the controller instance provided by the binding. Get.find will
+    // throw if the controller isn't registered; the binding should register it.
+    _controller = Get.find<OnboardingController>();
+  }
+
   Widget build(BuildContext context) {
     final page = boards[_index];
 
@@ -112,7 +121,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
               Row(
                 children: [
-                  TextButton(onPressed: _finish, child: const Text('Skip')),
+                  TextButton(onPressed: _finish, child: const Text('Sauter')),
                   const Spacer(),
                   ElevatedButton(
                     onPressed: () {
@@ -123,7 +132,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       }
                     },
                     child: Text(
-                      _index < boards.length - 1 ? 'Next' : 'Get started',
+                      _index < boards.length - 1 ? 'Suivant' : 'Commencer',
                     ),
                   ),
                 ],

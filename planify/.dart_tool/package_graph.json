@@ -11,7 +11,9 @@
         "flutter",
         "flutter_svg",
         "get",
-        "i18n"
+        "i18n",
+        "ionicons",
+        "step_progress_indicator"
       ],
       "devDependencies": [
         "flutter_lints",
@@ -41,6 +43,20 @@
         "stream_channel",
         "test_api",
         "vector_math"
+      ]
+    },
+    {
+      "name": "step_progress_indicator",
+      "version": "1.0.2",
+      "dependencies": [
+        "flutter"
+      ]
+    },
+    {
+      "name": "ionicons",
+      "version": "0.2.2",
+      "dependencies": [
+        "flutter"
       ]
     },
     {

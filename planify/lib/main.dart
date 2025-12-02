@@ -5,4 +5,4 @@ import 'app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(App());
-}
+} 

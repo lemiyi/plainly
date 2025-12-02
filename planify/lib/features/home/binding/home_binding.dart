@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class OnboardingBinding extends Bindings {
+class HomeBinding extends Bindings {
   @override
   void dependencies() {}
 }
